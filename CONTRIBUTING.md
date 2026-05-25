@@ -118,6 +118,40 @@ EA moves fast — stale data is expected and not a criticism of prior contributo
 
 ---
 
+---
+
+## Populating card images
+
+After adding new cards to `nodes.json`, you can automatically fetch their card art from Untapped.GG:
+
+```bash
+npm run fetch-images
+```
+
+### What it does
+
+The script:
+- Reads all nodes with a `wiki_url` field
+- Fetches each Untapped.GG page
+- Extracts the card image URL from the page (via og:image meta tags or prominent img elements)
+- Updates the `image_url` field in nodes.json
+- Logs progress and skips nodes that already have images
+
+### When to run it
+
+- After an EA patch adds new cards to Slay the Spire 2
+- Before opening a PR that adds new nodes
+- On a schedule as part of maintenance (optional)
+
+### Notes
+
+- The script requires **internet access** to fetch pages from Untapped.GG
+- It includes a **1-second delay between requests** to be respectful to the server
+- If a fetch fails, the script logs the error and continues with the next card
+- Already-populated `image_url` fields are left untouched
+
+---
+
 ## Code contributions
 
 Standard GitHub flow: fork → branch → PR. Please keep PRs focused — one feature or fix per PR.
