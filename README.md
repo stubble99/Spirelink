@@ -4,7 +4,21 @@
 
 Spirelink is a force-directed graph tool for tracking card and relic synergies across a run. It's designed to help players learn *why* certain cards work together, not just *that* they do.
 
-> **Orbweaver** is the first module — covering Defect Orb archetypes (Wall of Ice, Lord of Darkness, Pure Lightning).
+---
+
+## Character modules
+
+Spirelink is organized by **character**, then by **module** (playstyle cluster) within each character. Multiple modules can exist per character as the game and community knowledge expand.
+
+| Character | Module | Coverage |
+|-----------|--------|----------|
+| **Defect** | Orbweaver | Orb archetypes (Wall of Ice, Lord of Darkness, Pure Lightning) |
+| **Ironclad** | Crucible | Strength, Exhaust, Block, Self-damage, Vulnerable archetypes |
+| **Silent** | Slipstream | Poison, Shiv, Sly archetypes |
+| **Necrobinder** | Deathknell | Osty, Doom, Soul, Ethereal archetypes |
+| **Regent** | Starforge | Stars, Sovereign Blade, Hand/Draw Control archetypes |
+
+**Current focus:** Orbweaver (Defect) is fully detailed. Other modules are planned.
 
 ---
 
@@ -73,11 +87,13 @@ Slay the Spire 2 is in Early Access — data will change. See CONTRIBUTING.md fo
 
 ## Roadmap
 
-- [ ] Additional Defect archetypes (Pure Lightning, Lord of Darkness)
-- [ ] Ironclad module
-- [ ] Silent module  
+- [ ] Ironclad/Crucible module
+- [ ] Silent/Slipstream module
+- [ ] Necrobinder/Deathknell module
+- [ ] Regent/Starforge module
 - [ ] Run state persistence (local storage)
 - [ ] Shareable run URLs
+- [ ] Multi-module selector UI (switch between characters/modules in-app)
 - [ ] Patch changelog tracking
 
 ---

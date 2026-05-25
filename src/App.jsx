@@ -3,8 +3,15 @@ import GraphCanvas from "./components/GraphCanvas.jsx";
 import Sidebar from "./components/Sidebar.jsx";
 import { useForceGraph } from "./hooks/useForceGraph.js";
 import { DEFAULT_OWNED } from "./utils/constants.js";
-import nodesData from "../data/defect/nodes.json";
-import edgesData from "../data/defect/edges.json";
+
+// Module loader: currently loading Defect/Orbweaver
+// To switch modules, change the imports below to point to a different character/module:
+// - data/defect/orbweaver/* (Defect Orb archetypes)
+// - data/ironclad/crucible/* (Ironclad Strength/Exhaust/Block archetypes — when available)
+// - data/silent/slipstream/* (Silent Poison/Shiv/Sly archetypes — when available)
+// etc.
+import nodesData from "../data/defect/orbweaver/nodes.json";
+import edgesData from "../data/defect/orbweaver/edges.json";
 
 export default function App() {
   const [ownedIds, setOwnedIds] = useState(DEFAULT_OWNED);

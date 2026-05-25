@@ -100,10 +100,52 @@ The description should teach the player *why* the synergy exists, not just that 
 
 ---
 
+## Adding a new module
+
+A **module** is a playstyle cluster within a character (e.g., "Orbweaver" for Defect orb builds, "Crucible" for Ironclad strength builds).
+
+To add a new module:
+
+1. **Create the data directory:**
+   ```
+   data/<character>/<module-name>/
+     ├── nodes.json      (all cards, relics, mechanics in the module)
+     └── edges.json      (synergy relationships)
+   ```
+
+2. **Follow the node and edge schema** from `data/defect/orbweaver/`:
+   - Nodes include `id`, `label`, `type`, `rarity`, `cost`, `desc`, `archetype`, `wiki_url`, `image_url`
+   - Edges include `from`, `to`, `type`, `desc`
+   - See the field reference sections above for details
+
+3. **Choose a module name that reflects playstyle**, not just the character:
+   - ✓ Orbweaver (describes the orb stacking playstyle)
+   - ✓ Crucible (reflects the forging/strength theme)
+   - ✗ DefectModule2 (too generic)
+
+4. **One module can cover multiple related archetypes:**
+   - Orbweaver covers Wall of Ice, Lord of Darkness, and Pure Lightning (all orb-based)
+   - Crucible covers Strength, Exhaust, Block, Self-damage, and Vulnerable (all Ironclad builds)
+
+5. **Update the module table in README.md** to list the new module
+
+6. **Update `src/App.jsx`** to point to the new module:
+   ```javascript
+   // Change the imports at the top:
+   import nodesData from "../data/<character>/<module>/nodes.json";
+   import edgesData from "../data/<character>/<module>/edges.json";
+   ```
+
+---
+
 ## Adding a new character
 
-1. Create `data/<character>/nodes.json` and `data/<character>/edges.json` following the same schema.
-2. Update `src/App.jsx` to load the new character's data (or open an issue and let a developer handle the wiring).
+When a new character is added to Slay the Spire 2:
+
+1. Create a new top-level folder: `data/<character>/`
+2. Create at least one module within it: `data/<character>/<module>/`
+3. Add the module to the character/module table in README.md
+4. Wire it up in `src/App.jsx` by updating the import paths
 
 ---
 
