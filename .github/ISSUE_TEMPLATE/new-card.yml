@@ -1,0 +1,73 @@
+name: New card or relic to add
+about: A card or relic that should be added to a Spirelink module
+title: "[NEW] "
+labels: data, enhancement
+body:
+  - type: input
+    id: card_name
+    attributes:
+      label: Card or relic name
+    validations:
+      required: true
+  - type: dropdown
+    id: character
+    attributes:
+      label: Character
+      options:
+        - Defect
+        - Ironclad
+        - Silent
+        - Necrobinder
+        - Regent
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options:
+        - Card
+        - Relic
+        - Mechanic
+    validations:
+      required: true
+  - type: dropdown
+    id: rarity
+    attributes:
+      label: Rarity
+      options:
+        - Starter
+        - Common
+        - Uncommon
+        - Rare
+  - type: input
+    id: cost
+    attributes:
+      label: Energy cost (cards only)
+  - type: textarea
+    id: effect
+    attributes:
+      label: Card or relic effect (exact text)
+    validations:
+      required: true
+  - type: textarea
+    id: synergies
+    attributes:
+      label: Suggested synergy edges
+      description: Which existing nodes does this connect to, and why? This is the most valuable part.
+      placeholder: |
+        Connects to Frost Orb — generates 2 Frost per play, feeding passive block
+        Conflicts with Focus — reduces Focus by 1 on play
+  - type: dropdown
+    id: archetype
+    attributes:
+      label: Archetype
+      multiple: true
+      options:
+        - wall_of_ice
+        - lord_of_darkness
+        - pure_lightning
+        - crucible
+        - slipstream
+        - deathknell
+        - starforge
