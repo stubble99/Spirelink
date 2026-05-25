@@ -33,6 +33,18 @@ Spirelink is organized by **character**, then by **module** (playstyle cluster) 
 
 ---
 
+## Layout Variants
+
+Spirelink ships with an archetype cluster layout by default. 
+A force-directed layout variant is maintained on the 
+`layout/force-directed` branch for those who prefer organic clustering.
+
+Contributions and improvements welcome on either branch. 
+If you build a new layout variant, open a PR against main 
+with a new branch named `layout/{your-layout-name}`.
+
+---
+
 ## Running locally
 
 **Requirements:** Node.js 18+
