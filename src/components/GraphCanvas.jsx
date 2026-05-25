@@ -6,6 +6,7 @@ export default function GraphCanvas({
   ownedIds, hoveredId, selectedId, filterRel,
   onHover, onSelect, dims,
   isDark = true,
+  themeVars = {},
 }) {
   const highlightIds = selectedId || hoveredId
     ? (() => {
@@ -44,8 +45,19 @@ export default function GraphCanvas({
     window.addEventListener("mouseup", onUp);
   }, [posRef, onSelect]);
 
+  // Default theme if not provided
+  const defaultTheme = isDark ? {
+    canvasBg: "#111f2e",
+    nodeFillOwned: "#162535",
+  } : {
+    canvasBg: "#e8edf4",
+    nodeFillOwned: "#1a2f42",
+  };
+
+  const theme = Object.keys(themeVars).length > 0 ? themeVars : defaultTheme;
+
   return (
-    <svg width={dims.width} height={dims.height} style={{ position: "absolute", inset: 0 }}>
+    <svg width={dims.width} height={dims.height} style={{ position: "absolute", inset: 0, background: theme.canvasBg }}>
       <defs>
         {Object.entries(REL_COLOR).map(([type, color]) => (
           <marker key={type} id={`arr-${type}`} markerWidth="6" markerHeight="6"
@@ -77,7 +89,7 @@ export default function GraphCanvas({
         const my = (fp.y + tp.y) / 2;
 
         // Increase edge opacity in light mode since edges wash out
-        const edgeOpacity = isDark ? 0.28 : 0.45;
+        const edgeOpacity = isDark ? 0.35 : 0.45;
         return (
           <g key={i} opacity={dimmed ? 0.06 : isActive ? 1 : edgeOpacity}>
             <line
@@ -156,9 +168,9 @@ export default function GraphCanvas({
               />
             )}
 
-            {/* Body — node fill dark even in light mode so card art remains visible */}
+            {/* Body — node fill uses theme color for better contrast against canvas */}
             <circle cx={p.x} cy={p.y} r={r}
-              fill={owned ? `${color}1a` : (isDark ? "#060d14" : "#0d1f2d")}
+              fill={owned ? `${color}1a` : theme.nodeFillOwned}
               stroke={color}
               strokeWidth={isSelected ? 2.5 : isHovered ? 2 : 1.5}
               strokeOpacity={owned ? 1 : 0.3}
@@ -187,12 +199,12 @@ export default function GraphCanvas({
               </>
             )}
 
-            {/* Label — use darker text in light mode for readability */}
+            {/* Label — increased font size and letter-spacing for better readability */}
             <text x={p.x} y={p.y + r + 14} textAnchor="middle"
-              fontSize={isMechanic ? "10" : "9"}
+              fontSize={isMechanic ? "11" : "10"}
               fill={isDark ? color : "#1a3344"}
               opacity={owned ? 0.95 : 0.38}
-              letterSpacing="0.04em"
+              letterSpacing="0.05em"
               style={{ pointerEvents: "none", userSelect: "none" }}>
               {n.label}
             </text>

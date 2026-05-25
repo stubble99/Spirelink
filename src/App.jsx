@@ -18,10 +18,12 @@ const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
 // Theme variables
 const themeVars = prefersDark ? {
-  bgPrimary: "#060d14",
-  bgSecondary: "#07111a",
-  headerBg: "#07111a",
-  sidebarBg: "#07111a",
+  bgPrimary: "#0d1f2d",
+  bgSecondary: "#111f2e",
+  headerBg: "#0a1929",
+  sidebarBg: "#0d1f2d",
+  canvasBg: "#111f2e",
+  nodeFillOwned: "#162535",
   border: "#0e2233",
   textPrimary: "#8baab8",
   textMuted: "#2a4a5e",
@@ -30,10 +32,12 @@ const themeVars = prefersDark ? {
   accentGreen: "#34d399",
   accentRed: "#f87171",
 } : {
-  bgPrimary: "#f0f4f8",
-  bgSecondary: "#e2e8f0",
+  bgPrimary: "#eef2f7",
+  bgSecondary: "#e8edf4",
   headerBg: "#e2e8f0",
-  sidebarBg: "#e8eef4",
+  sidebarBg: "#dde4ee",
+  canvasBg: "#e8edf4",
+  nodeFillOwned: "#1a2f42",
   border: "#d0d8e0",
   textPrimary: "#1a3344",
   textMuted: "#4a5f7a",
@@ -184,6 +188,7 @@ export default function App() {
             onSelect={handleSelect}
             dims={dims}
             isDark={prefersDark}
+            themeVars={themeVars}
           />
         </div>
 
