@@ -16,9 +16,23 @@ export default function Sidebar({
       {/* Node detail panel */}
       <div style={{
         padding: "14px 16px", borderBottom: "1px solid #0e2233", minHeight: 160,
+        overflow: "auto", maxHeight: "40vh",
       }}>
         {activeNode ? (
           <>
+            {/* Image if available */}
+            {activeNode.image_url && activeNode.image_url.length > 0 && (
+              <div style={{ marginBottom: 12 }}>
+                <img
+                  src={activeNode.image_url}
+                  alt={activeNode.label}
+                  style={{
+                    width: "100%", borderRadius: "4px", display: "block",
+                    border: `1px solid ${nodeColor(activeNode)}33`,
+                  }}
+                />
+              </div>
+            )}
             <div style={{
               fontSize: 12, fontWeight: "bold", letterSpacing: "0.15em",
               color: nodeColor(activeNode), textTransform: "uppercase", marginBottom: 5,
@@ -37,6 +51,30 @@ export default function Sidebar({
             <div style={{ fontSize: 10, color: "#5a7a8a", lineHeight: 1.65, marginBottom: 12 }}>
               {activeNode.desc}
             </div>
+            {/* Wiki link if available */}
+            {activeNode.wiki_url && (
+              <div style={{ marginBottom: 12 }}>
+                <a
+                  href={activeNode.wiki_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    fontSize: 9, color: "#38bdf8", textDecoration: "none",
+                    letterSpacing: "0.08em", border: "1px solid #38bdf833",
+                    padding: "4px 8px", display: "inline-block", borderRadius: "2px",
+                    transition: "all 0.2s",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#38bdf811";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "transparent";
+                  }}
+                >
+                  VIEW ON UNTAPPED.GG ↗
+                </a>
+              </div>
+            )}
             {activeNode.type !== "mechanic" && (
               <button
                 onClick={() => onToggleOwned(activeNode.id)}

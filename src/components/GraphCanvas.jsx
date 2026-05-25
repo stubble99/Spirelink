@@ -103,11 +103,14 @@ export default function GraphCanvas({
 
         const owned = ownedIds.has(n.id);
         const isMechanic = n.type === "mechanic";
+        const isRelic = n.type === "relic";
         const color = isMechanic ? "#38bdf8" : n.rarity ? RARITY_COLOR[n.rarity] : "#888";
         const isHovered  = hoveredId  === n.id;
         const isSelected = selectedId === n.id;
         const dimmed = highlightIds && !highlightIds.has(n.id);
-        const r = isMechanic ? 22 : n.type === "relic" ? 19 : 16;
+        const r = isMechanic ? 26 : isRelic ? 24 : 28;
+        const hasImage = n.image_url && n.image_url.length > 0;
+        const clipPathId = `clip-${n.id}`;
 
         return (
           <g key={n.id}
@@ -117,6 +120,15 @@ export default function GraphCanvas({
             onMouseLeave={() => onHover(null)}
             onMouseDown={(e) => onMouseDown(e, n.id)}
           >
+            {/* Define clipPath for image if it exists */}
+            {hasImage && (
+              <defs>
+                <clipPath id={clipPathId}>
+                  <circle cx={p.x} cy={p.y} r={r} />
+                </clipPath>
+              </defs>
+            )}
+
             {/* Glow halo for owned */}
             {owned && (isHovered || isSelected) && (
               <circle cx={p.x} cy={p.y} r={r + 8}
@@ -131,6 +143,16 @@ export default function GraphCanvas({
                 strokeOpacity={isHovered || isSelected ? 0.5 : 0.15} />
             )}
 
+            {/* Image if available */}
+            {hasImage && (
+              <image
+                x={p.x - r} y={p.y - r}
+                width={r * 2} height={r * 2}
+                href={n.image_url}
+                clipPath={`url(#${clipPathId})`}
+              />
+            )}
+
             {/* Body */}
             <circle cx={p.x} cy={p.y} r={r}
               fill={owned ? `${color}1a` : "#060d14"}
@@ -142,9 +164,9 @@ export default function GraphCanvas({
             />
 
             {/* Mechanic triangle */}
-            {isMechanic && (
+            {isMechanic && !hasImage && (
               <polygon
-                points={`${p.x},${p.y - 9} ${p.x + 8},${p.y + 5} ${p.x - 8},${p.y + 5}`}
+                points={`${p.x},${p.y - 10} ${p.x + 10},${p.y + 6} ${p.x - 10},${p.y + 6}`}
                 fill={color} opacity={owned ? 0.55 : 0.18}
                 style={{ pointerEvents: "none" }}
               />
