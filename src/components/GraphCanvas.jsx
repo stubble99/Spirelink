@@ -5,6 +5,7 @@ export default function GraphCanvas({
   nodes, edges, positions, posRef,
   ownedIds, hoveredId, selectedId, filterRel,
   onHover, onSelect, dims,
+  isDark = true,
 }) {
   const highlightIds = selectedId || hoveredId
     ? (() => {
@@ -75,8 +76,10 @@ export default function GraphCanvas({
         const mx = (fp.x + tp.x) / 2;
         const my = (fp.y + tp.y) / 2;
 
+        // Increase edge opacity in light mode since edges wash out
+        const edgeOpacity = isDark ? 0.28 : 0.45;
         return (
-          <g key={i} opacity={dimmed ? 0.06 : isActive ? 1 : 0.28}>
+          <g key={i} opacity={dimmed ? 0.06 : isActive ? 1 : edgeOpacity}>
             <line
               x1={fp.x} y1={fp.y} x2={tp.x} y2={tp.y}
               stroke={color}
@@ -153,9 +156,9 @@ export default function GraphCanvas({
               />
             )}
 
-            {/* Body */}
+            {/* Body — node fill dark even in light mode so card art remains visible */}
             <circle cx={p.x} cy={p.y} r={r}
-              fill={owned ? `${color}1a` : "#060d14"}
+              fill={owned ? `${color}1a` : (isDark ? "#060d14" : "#0d1f2d")}
               stroke={color}
               strokeWidth={isSelected ? 2.5 : isHovered ? 2 : 1.5}
               strokeOpacity={owned ? 1 : 0.3}
@@ -184,10 +187,11 @@ export default function GraphCanvas({
               </>
             )}
 
-            {/* Label */}
+            {/* Label — use darker text in light mode for readability */}
             <text x={p.x} y={p.y + r + 14} textAnchor="middle"
               fontSize={isMechanic ? "10" : "9"}
-              fill={color} opacity={owned ? 0.95 : 0.38}
+              fill={isDark ? color : "#1a3344"}
+              opacity={owned ? 0.95 : 0.38}
               letterSpacing="0.04em"
               style={{ pointerEvents: "none", userSelect: "none" }}>
               {n.label}

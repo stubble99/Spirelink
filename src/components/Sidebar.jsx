@@ -3,19 +3,40 @@ import { REL_COLOR, REL_LABEL, RARITY_COLOR } from "../utils/constants.js";
 export default function Sidebar({
   allNodes, activeNode, activeEdges,
   ownedIds, onToggleOwned, filterRel, onFilterRel,
+  isDark = true,
+  themeVars = {},
 }) {
+  // Default theme vars if not provided
+  const defaultThemeVars = isDark ? {
+    bgPrimary: "#060d14",
+    sidebarBg: "#07111a",
+    border: "#0e2233",
+    textPrimary: "#8baab8",
+    textMuted: "#2a4a5e",
+    textWeak: "#1a3344",
+  } : {
+    bgPrimary: "#f0f4f8",
+    sidebarBg: "#e8eef4",
+    border: "#d0d8e0",
+    textPrimary: "#1a3344",
+    textMuted: "#4a5f7a",
+    textWeak: "#1a3344",
+  };
+
+  const theme = Object.keys(themeVars).length > 0 ? themeVars : defaultThemeVars;
+
   const nodeColor = (n) =>
     n.type === "mechanic" ? "#38bdf8" : n.rarity ? RARITY_COLOR[n.rarity] : "#888";
 
   return (
     <div style={{
-      width: 270, background: "#07111a", borderLeft: "1px solid #0e2233",
+      width: 270, background: theme.sidebarBg, borderLeft: `1px solid ${theme.border}`,
       display: "flex", flexDirection: "column", overflow: "hidden", flexShrink: 0,
     }}>
 
       {/* Node detail panel */}
       <div style={{
-        padding: "14px 16px", borderBottom: "1px solid #0e2233", minHeight: 160,
+        padding: "14px 16px", borderBottom: `1px solid ${theme.border}`, minHeight: 160,
         overflow: "auto", maxHeight: "40vh",
       }}>
         {activeNode ? (
@@ -39,7 +60,7 @@ export default function Sidebar({
             }}>
               {activeNode.label}
             </div>
-            <div style={{ fontSize: 9, color: "#2a4a5e", letterSpacing: "0.1em", marginBottom: 8 }}>
+            <div style={{ fontSize: 9, color: theme.textMuted, letterSpacing: "0.1em", marginBottom: 8 }}>
               {activeNode.type === "mechanic" ? "MECHANIC" :
                activeNode.type === "relic" ? "RELIC" :
                `${activeNode.rarity?.toUpperCase()} CARD · COST ${activeNode.cost}`}
@@ -48,7 +69,7 @@ export default function Sidebar({
                 {ownedIds.has(activeNode.id) ? "OWNED" : "NOT ACQUIRED"}
               </span>
             </div>
-            <div style={{ fontSize: 10, color: "#5a7a8a", lineHeight: 1.65, marginBottom: 12 }}>
+            <div style={{ fontSize: 10, color: theme.textPrimary, lineHeight: 1.65, marginBottom: 12 }}>
               {activeNode.desc}
             </div>
             {/* Wiki link if available */}
@@ -62,7 +83,7 @@ export default function Sidebar({
                     fontSize: 9, color: "#38bdf8", textDecoration: "none",
                     letterSpacing: "0.08em", border: "1px solid #38bdf833",
                     padding: "4px 8px", display: "inline-block", borderRadius: "2px",
-                    transition: "all 0.2s",
+                    transition: "all 0.2s", background: "transparent",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.background = "#38bdf811";
@@ -90,11 +111,11 @@ export default function Sidebar({
             )}
           </>
         ) : (
-          <div style={{ fontSize: 10, color: "#1a3344", lineHeight: 1.8, letterSpacing: "0.05em" }}>
+          <div style={{ fontSize: 10, color: theme.textWeak, lineHeight: 1.8, letterSpacing: "0.05em" }}>
             HOVER a node to preview.<br />
             CLICK to lock selection.<br />
             DRAG to rearrange.<br /><br />
-            <span style={{ color: "#0e2233" }}>
+            <span style={{ color: theme.border }}>
               Solid ring = owned · Dashed = not acquired<br />
               ▲ triangle = mechanic node
             </span>
@@ -106,7 +127,7 @@ export default function Sidebar({
       {activeNode && activeEdges.length > 0 && (
         <div style={{ flex: 1, overflow: "auto", padding: "10px 16px" }}>
           <div style={{
-            fontSize: 9, color: "#1a3344", letterSpacing: "0.15em", marginBottom: 10,
+            fontSize: 9, color: theme.textWeak, letterSpacing: "0.15em", marginBottom: 10,
           }}>
             RELATIONSHIPS ({activeEdges.length})
           </div>
@@ -138,7 +159,7 @@ export default function Sidebar({
                     </span>
                   )}
                 </div>
-                <div style={{ fontSize: 9, color: "#4a6a7a", lineHeight: 1.65 }}>
+                <div style={{ fontSize: 9, color: theme.textMuted, lineHeight: 1.65 }}>
                   {e.desc}
                 </div>
               </div>
@@ -149,9 +170,9 @@ export default function Sidebar({
 
       {/* Legend + filter */}
       <div style={{
-        padding: "12px 16px", borderTop: "1px solid #0e2233", flexShrink: 0,
+        padding: "12px 16px", borderTop: `1px solid ${theme.border}`, flexShrink: 0,
       }}>
-        <div style={{ fontSize: 9, color: "#1a3344", letterSpacing: "0.15em", marginBottom: 8 }}>
+        <div style={{ fontSize: 9, color: theme.textWeak, letterSpacing: "0.15em", marginBottom: 8 }}>
           FILTER BY EDGE TYPE
         </div>
         {Object.entries(REL_LABEL).map(([type, label]) => (
@@ -174,7 +195,7 @@ export default function Sidebar({
           </div>
         ))}
 
-        <div style={{ marginTop: 10, fontSize: 9, color: "#1a3344", letterSpacing: "0.08em", lineHeight: 1.7 }}>
+        <div style={{ marginTop: 10, fontSize: 9, color: theme.textWeak, letterSpacing: "0.08em", lineHeight: 1.7 }}>
           RARITY: <span style={{ color: RARITY_COLOR.common }}>COMMON</span>{" · "}
           <span style={{ color: RARITY_COLOR.uncommon }}>UNCOMMON</span>{" · "}
           <span style={{ color: RARITY_COLOR.rare }}>RARE</span>

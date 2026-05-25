@@ -20,6 +20,8 @@ const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 const themeVars = prefersDark ? {
   bgPrimary: "#060d14",
   bgSecondary: "#07111a",
+  headerBg: "#07111a",
+  sidebarBg: "#07111a",
   border: "#0e2233",
   textPrimary: "#8baab8",
   textMuted: "#2a4a5e",
@@ -29,14 +31,16 @@ const themeVars = prefersDark ? {
   accentRed: "#f87171",
 } : {
   bgPrimary: "#f0f4f8",
-  bgSecondary: "#e8ecf1",
+  bgSecondary: "#e2e8f0",
+  headerBg: "#e2e8f0",
+  sidebarBg: "#e8eef4",
   border: "#d0d8e0",
-  textPrimary: "#0a1f2e",
+  textPrimary: "#1a3344",
   textMuted: "#4a5f7a",
-  textWeak: "#7a8fa5",
-  accentCyan: "#0066cc",
-  accentGreen: "#228822",
-  accentRed: "#cc2222",
+  textWeak: "#1a3344",
+  accentCyan: "#38bdf8",
+  accentGreen: "#34d399",
+  accentRed: "#f87171",
 };
 
 export default function App() {
@@ -113,7 +117,7 @@ export default function App() {
       <header style={{
         padding: "10px 20px", borderBottom: `1px solid ${themeVars.border}`,
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        background: prefersDark ? "linear-gradient(90deg, #060d14 0%, #091826 100%)" : "linear-gradient(90deg, #f0f4f8 0%, #eef2f7 100%)",
+        background: themeVars.headerBg,
         flexShrink: 0,
       }}>
         <div>
@@ -179,6 +183,7 @@ export default function App() {
             onHover={setHoveredId}
             onSelect={handleSelect}
             dims={dims}
+            isDark={prefersDark}
           />
         </div>
 
@@ -191,6 +196,8 @@ export default function App() {
           onToggleOwned={toggleOwned}
           filterRel={filterRel}
           onFilterRel={handleFilterRel}
+          isDark={prefersDark}
+          themeVars={themeVars}
         />
       </div>
     </div>
