@@ -112,7 +112,7 @@ export default function GraphCanvas({
       })}
 
       {/* Nodes */}
-      {nodes.map((n) => {
+      {nodes.map((n, idx) => {
         const p = positions[n.id];
         if (!p) return null;
 
@@ -126,6 +126,7 @@ export default function GraphCanvas({
         const r = isMechanic ? 26 : isRelic ? 24 : 28;
         const hasImage = n.image_url && n.image_url.length > 0;
         const clipPathId = `clip-${n.id}`;
+        const labelYOffset = idx % 2 === 0 ? (r + 18) : -(r + 18);
 
         return (
           <g key={n.id}
@@ -199,8 +200,8 @@ export default function GraphCanvas({
               </>
             )}
 
-            {/* Label — increased font size and letter-spacing for better readability */}
-            <text x={p.x} y={p.y + r + 14} textAnchor="middle"
+            {/* Label — alternates above/below based on node index to reduce collision */}
+            <text x={p.x} y={p.y + labelYOffset} textAnchor="middle"
               fontSize={isMechanic ? "11" : "10"}
               fill={isDark ? color : "#1a3344"}
               opacity={owned ? 0.95 : 0.38}
