@@ -43,6 +43,7 @@ Spirelink supports multiple layout algorithms. Each is maintained on its own bra
 | `layout/hierarchical` | Rows by type & cost | Learning card roles and relationships |
 | `layout/hybrid` | Clusters + light physics | Organic feel, daily use |
 | `layout/force-directed` | Full physics simulation | Exploratory analysis, interactive discovery |
+| `layout/solar-system` | Deck-relative orbital rings | Learning spatial memory |
 
 Branch as `layout/{your-name}` and open a PR to contribute a new layout variant.
 
