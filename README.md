@@ -2,7 +2,7 @@
 
 **Community synergy map for Slay the Spire 2.**
 
-Spirelink is a force-directed graph tool for tracking card and relic synergies across a run. It's designed to help players learn *why* certain cards work together, not just *that* they do.
+Spirelink is a graphical tool for tracking card and relic synergies across a run. It's designed to help players learn *why* certain cards work together, not just *that* they do.
 
 ---
 
