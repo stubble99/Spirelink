@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { REL_COLOR, REL_LABEL, RARITY_COLOR } from "../utils/constants.js";
+import { getClusterMetadata } from "../utils/layout.js";
 
 export default function GraphCanvas({
   nodes, edges, positions, posRef,
@@ -56,6 +57,16 @@ export default function GraphCanvas({
 
   const theme = Object.keys(themeVars).length > 0 ? themeVars : defaultTheme;
 
+  // Cluster colors — thematic to each cluster's purpose
+  const clusterColors = {
+    frost_engine: "#38bdf8",   // cyan — ice
+    mechanics: "#a78bfa",      // purple — the core mechanic
+    scaling: "#fbbf24",        // amber — power scaling
+    finishers: "#f87171",      // red — finishing blow
+    relics: "#34d399",         // emerald — valuable finds
+    conflicts: "#f87171",      // red — anti-synergy
+  };
+
   return (
     <svg width={dims.width} height={dims.height} style={{ position: "absolute", inset: 0, background: theme.canvasBg }}>
       <defs>
@@ -74,6 +85,46 @@ export default function GraphCanvas({
           <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
         </filter>
       </defs>
+
+      {/* Cluster backgrounds and labels — rendered first so they appear behind nodes/edges */}
+      {getClusterMetadata().map((cluster) => {
+        const centreX = cluster.normCentre.x * dims.width;
+        const centreY = cluster.normCentre.y * dims.height;
+        const bgRadius = 110; // radius of background rectangle
+        const color = clusterColors[cluster.name];
+
+        return (
+          <g key={`cluster-${cluster.name}`}>
+            {/* Rounded rectangle background */}
+            <rect
+              x={centreX - bgRadius}
+              y={centreY - bgRadius}
+              width={bgRadius * 2}
+              height={bgRadius * 2}
+              rx={12}
+              fill={color}
+              fillOpacity="0.04"
+              stroke={color}
+              strokeOpacity="0.08"
+              strokeWidth="1"
+            />
+            {/* Cluster label */}
+            <text
+              x={centreX}
+              y={centreY}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fontSize="48"
+              fontWeight="bold"
+              fill={color}
+              opacity="0.06"
+              letterSpacing="0.15em"
+              style={{ pointerEvents: "none", userSelect: "none" }}>
+              {cluster.label}
+            </text>
+          </g>
+        );
+      })}
 
       {/* Edges */}
       {edges.map((e, i) => {
