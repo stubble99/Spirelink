@@ -13,6 +13,32 @@ import { DEFAULT_OWNED } from "./utils/constants.js";
 import nodesData from "../data/defect/orbweaver/nodes.json";
 import edgesData from "../data/defect/orbweaver/edges.json";
 
+// Detect dark/light mode preference
+const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+// Theme variables
+const themeVars = prefersDark ? {
+  bgPrimary: "#060d14",
+  bgSecondary: "#07111a",
+  border: "#0e2233",
+  textPrimary: "#8baab8",
+  textMuted: "#2a4a5e",
+  textWeak: "#1a3344",
+  accentCyan: "#38bdf8",
+  accentGreen: "#34d399",
+  accentRed: "#f87171",
+} : {
+  bgPrimary: "#f0f4f8",
+  bgSecondary: "#e8ecf1",
+  border: "#d0d8e0",
+  textPrimary: "#0a1f2e",
+  textMuted: "#4a5f7a",
+  textWeak: "#7a8fa5",
+  accentCyan: "#0066cc",
+  accentGreen: "#228822",
+  accentRed: "#cc2222",
+};
+
 export default function App() {
   const [ownedIds, setOwnedIds] = useState(DEFAULT_OWNED);
   const [hoveredId, setHoveredId] = useState(null);
@@ -77,44 +103,45 @@ export default function App() {
 
   return (
     <div style={{
-      width: "100vw", height: "100vh", background: "#060d14",
+      width: "100vw", height: "100vh", background: themeVars.bgPrimary,
       fontFamily: "'Courier New', monospace",
       display: "flex", flexDirection: "column", overflow: "hidden",
-      color: "#8baab8",
+      color: themeVars.textPrimary,
+      transition: "background-color 0.3s ease, color 0.3s ease",
     }}>
       {/* Header */}
       <header style={{
-        padding: "10px 20px", borderBottom: "1px solid #0e2233",
+        padding: "10px 20px", borderBottom: `1px solid ${themeVars.border}`,
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        background: "linear-gradient(90deg, #060d14 0%, #091826 100%)",
+        background: prefersDark ? "linear-gradient(90deg, #060d14 0%, #091826 100%)" : "linear-gradient(90deg, #f0f4f8 0%, #eef2f7 100%)",
         flexShrink: 0,
       }}>
         <div>
           <div style={{
-            fontSize: 14, letterSpacing: "0.35em", color: "#38bdf8",
+            fontSize: 14, letterSpacing: "0.35em", color: themeVars.accentCyan,
             textTransform: "uppercase", fontWeight: "bold",
           }}>
             SPIRELINK
           </div>
-          <div style={{ fontSize: 9, color: "#1a3344", marginTop: 1, letterSpacing: "0.2em" }}>
+          <div style={{ fontSize: 9, color: themeVars.textWeak, marginTop: 1, letterSpacing: "0.2em" }}>
             ORBWEAVER · DEFECT ORB ARCHETYPES · EA v0.1
           </div>
         </div>
 
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-          <div style={{ fontSize: 9, color: "#1a3344", letterSpacing: "0.1em" }}>
-            <span style={{ color: "#34d399" }}>{ownedCount} OWNED</span>
+          <div style={{ fontSize: 9, color: themeVars.textWeak, letterSpacing: "0.1em" }}>
+            <span style={{ color: themeVars.accentGreen }}>{ownedCount} OWNED</span>
             {" · "}
-            <span style={{ color: "#2a4a5e" }}>{ghostCount} SYNERGY TARGETS</span>
+            <span style={{ color: themeVars.textMuted }}>{ghostCount} SYNERGY TARGETS</span>
             {" · "}
             {visibleEdges.length} EDGES
           </div>
           <button
             onClick={() => setShowAll((v) => !v)}
             style={{
-              background: showAll ? "#0e2233" : "transparent",
-              border: "1px solid #0e2233",
-              color: showAll ? "#38bdf8" : "#2a4a5e",
+              background: showAll ? themeVars.bgSecondary : "transparent",
+              border: `1px solid ${themeVars.border}`,
+              color: showAll ? themeVars.accentCyan : themeVars.textMuted,
               padding: "4px 12px", fontSize: 9, cursor: "pointer",
               letterSpacing: "0.12em", transition: "all 0.2s",
             }}>
@@ -127,8 +154,8 @@ export default function App() {
               setFilterRel(null);
             }}
             style={{
-              background: "transparent", border: "1px solid #0e2233",
-              color: "#2a4a5e", padding: "4px 12px", fontSize: 9,
+              background: "transparent", border: `1px solid ${themeVars.border}`,
+              color: themeVars.textMuted, padding: "4px 12px", fontSize: 9,
               cursor: "pointer", letterSpacing: "0.12em",
             }}>
             RESET VIEW
