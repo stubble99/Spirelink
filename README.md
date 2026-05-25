@@ -35,13 +35,16 @@ Spirelink is organized by **character**, then by **module** (playstyle cluster) 
 
 ## Layout Variants
 
-Spirelink ships with an archetype cluster layout by default. 
-A force-directed layout variant is maintained on the 
-`layout/force-directed` branch for those who prefer organic clustering.
+Spirelink supports multiple layout algorithms. Each is maintained on its own branch.
 
-Contributions and improvements welcome on either branch. 
-If you build a new layout variant, open a PR against main 
-with a new branch named `layout/{your-layout-name}`.
+| Branch | Layout | Best for |
+|--------|--------|----------|
+| `main` | Archetype clusters | First-time users, clean screenshots |
+| `layout/hierarchical` | Rows by type & cost | Learning card roles and relationships |
+| `layout/hybrid` | Clusters + light physics | Organic feel, daily use |
+| `layout/force-directed` | Full physics simulation | Exploratory analysis, interactive discovery |
+
+Branch as `layout/{your-name}` and open a PR to contribute a new layout variant.
 
 ---
 
