@@ -5,7 +5,7 @@ import fetch from "node-fetch";
 import * as cheerio from "cheerio";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const nodesPath = path.join(__dirname, "../data/defect/nodes.json");
+const nodesPath = path.join(__dirname, "../data/defect/orbweaver/nodes.json");
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
