@@ -111,7 +111,7 @@ export default function Sidebar({
             )}
           </>
         ) : (
-          <div style={{ fontSize: 10, color: theme.textWeak, lineHeight: 1.8, letterSpacing: "0.05em" }}>
+          <div style={{ fontSize: 10, color: "#4a7a9b", lineHeight: 1.8, letterSpacing: "0.05em" }}>
             HOVER a node to preview.<br />
             CLICK to lock selection.<br />
             DRAG to rearrange.<br /><br />
@@ -127,7 +127,7 @@ export default function Sidebar({
       {activeNode && activeEdges.length > 0 && (
         <div style={{ flex: 1, overflow: "auto", padding: "10px 16px" }}>
           <div style={{
-            fontSize: 9, color: theme.textWeak, letterSpacing: "0.15em", marginBottom: 10,
+            fontSize: 9, color: "#3a6a8a", letterSpacing: "0.15em", marginBottom: 10,
           }}>
             RELATIONSHIPS ({activeEdges.length})
           </div>
@@ -172,7 +172,7 @@ export default function Sidebar({
       <div style={{
         padding: "12px 16px", borderTop: `1px solid ${theme.border}`, flexShrink: 0,
       }}>
-        <div style={{ fontSize: 9, color: theme.textWeak, letterSpacing: "0.15em", marginBottom: 8 }}>
+        <div style={{ fontSize: 9, color: "#3a6a8a", letterSpacing: "0.15em", marginBottom: 8 }}>
           FILTER BY EDGE TYPE
         </div>
         {Object.entries(REL_LABEL).map(([type, label]) => (
@@ -195,7 +195,7 @@ export default function Sidebar({
           </div>
         ))}
 
-        <div style={{ marginTop: 10, fontSize: 9, color: theme.textWeak, letterSpacing: "0.08em", lineHeight: 1.7 }}>
+        <div style={{ marginTop: 10, fontSize: 9, color: "#3a6a8a", letterSpacing: "0.08em", lineHeight: 1.7 }}>
           RARITY: <span style={{ color: RARITY_COLOR.common }}>COMMON</span>{" · "}
           <span style={{ color: RARITY_COLOR.uncommon }}>UNCOMMON</span>{" · "}
           <span style={{ color: RARITY_COLOR.rare }}>RARE</span>
