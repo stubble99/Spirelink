@@ -1,0 +1,57 @@
+[
+  { "from": "ice_lance",     "to": "frost_orb",           "type": "generates",   "desc": "Channels 3 Frost at once — fills your slots in a single play, often overflowing without Capacitor." },
+  { "from": "ice_lance",     "to": "hailstorm",           "type": "triggers",    "desc": "Each Frost generated feeds Hailstorm's end-of-turn AoE condition reliably." },
+  { "from": "ice_lance",     "to": "loop",                "type": "scales_with", "desc": "More Frost orbs from Ice Lance means more passive triggers from Loop each turn." },
+  { "from": "ice_lance",     "to": "barrage",             "type": "scales_with", "desc": "3 Frost channels = 3 more orbs for Barrage to count — significant damage increase." },
+
+  { "from": "glacier",       "to": "frost_orb",           "type": "generates",   "desc": "Channels 2 Frost while gaining Block — exceptional double value per energy spent." },
+  { "from": "glacier",       "to": "intimidating_helmet", "type": "triggers",    "desc": "2-cost card triggers Helmet's +4 Block bonus — net 10 block for 2 energy." },
+  { "from": "glacier",       "to": "hailstorm",           "type": "triggers",    "desc": "Adds Frost to sustain Hailstorm's AoE condition every turn." },
+
+  { "from": "shadow_shield", "to": "dark_orb",            "type": "generates",   "desc": "Channels 1 Dark — a growing damage threat sitting behind your Frost wall." },
+  { "from": "shadow_shield", "to": "intimidating_helmet", "type": "triggers",    "desc": "2-cost card triggers Helmet's +4 Block bonus every play." },
+
+  { "from": "hailstorm",    "to": "frost_orb",            "type": "scales_with", "desc": "Needs at least 1 Frost channeled to fire. More Frost = more reliable AoE each turn." },
+  { "from": "hailstorm",    "to": "focus",                "type": "scales_with", "desc": "Focus increases Frost passive block, making the engine more durable while Hailstorm deals damage." },
+
+  { "from": "frost_orb",    "to": "focus",                "type": "scales_with", "desc": "Each Focus point adds directly to Frost passive block (+1 per orb per turn)." },
+  { "from": "frost_orb",    "to": "orb_slots",            "type": "scales_with", "desc": "More slots = more simultaneous Frost passives = more block per turn stacking up." },
+  { "from": "frost_orb",    "to": "loop",                 "type": "triggers",    "desc": "Loop triggers your rightmost Frost passive at turn start — free block before spending any energy." },
+
+  { "from": "dark_orb",     "to": "focus",                "type": "scales_with", "desc": "Focus amplifies Dark Orb Evoke damage — crucial for boss-killing potential." },
+  { "from": "dark_orb",     "to": "loop",                 "type": "triggers",    "desc": "Loop on a Dark Orb grows its damage each turn for free — enables massive Evoke payoffs." },
+
+  { "from": "defragment",   "to": "focus",                "type": "generates",   "desc": "Permanently grants +1 Focus (+2 upgraded). The single most impactful Defect card for any Orb build." },
+  { "from": "defragment",   "to": "frost_orb",            "type": "amplifies",   "desc": "Each Focus point adds 1 block per Frost passive — multiplies across all active slots." },
+  { "from": "defragment",   "to": "dark_orb",             "type": "amplifies",   "desc": "Focus amplifies Dark Orb Evoke damage — transforms it from a slow threat to a win condition." },
+
+  { "from": "capacitor",    "to": "orb_slots",            "type": "generates",   "desc": "Adds 2 Orb Slots (+3 upgraded). Ice Lance stops overwriting itself — your channels stack instead." },
+  { "from": "capacitor",    "to": "barrage",              "type": "amplifies",   "desc": "More slots filled = significantly more damage from Barrage's per-orb calculation." },
+  { "from": "capacitor",    "to": "frost_orb",            "type": "amplifies",   "desc": "With 5 slots, Ice Lance's 3 Frost channels stack rather than evict existing orbs." },
+
+  { "from": "loop",         "to": "frost_orb",            "type": "triggers",    "desc": "Free block every turn start without spending energy. The core passive value engine for Wall of Ice." },
+  { "from": "loop",         "to": "dark_orb",             "type": "triggers",    "desc": "Grows Dark Orb damage every turn for free — enables massive Evoke payoffs against bosses." },
+
+  { "from": "barrage",      "to": "orb_slots",            "type": "scales_with", "desc": "Damage = 5 × channeled orbs. At 5 slots full: 25 damage for 1 energy — exceptional rate." },
+  { "from": "barrage",      "to": "frost_orb",            "type": "scales_with", "desc": "Frost orbs are your most common fill — Barrage converts passive defense into burst damage." },
+
+  { "from": "coolheaded",   "to": "frost_orb",            "type": "generates",   "desc": "1 Frost + 1 card draw for 1 energy. Efficient and replaces itself — excellent card economy." },
+  { "from": "cold_snap",    "to": "frost_orb",            "type": "generates",   "desc": "6 damage + 1 Frost for 1 energy. Cheap early game frost generation." },
+
+  { "from": "intimidating_helmet", "to": "glacier",       "type": "triggers",    "desc": "Glacier costs 2 — every play gives +4 Block from Helmet on top of Glacier's own 6 Block." },
+  { "from": "intimidating_helmet", "to": "shadow_shield", "type": "triggers",    "desc": "Shadow Shield costs 2 — Helmet fires every single time." },
+
+  { "from": "data_disk",    "to": "focus",                "type": "generates",   "desc": "Starts every combat with 1 Focus — passive amplification from turn 1 without spending a card slot." },
+  { "from": "data_disk",    "to": "frost_orb",            "type": "amplifies",   "desc": "Focus from Data Disk means every Frost passive is worth more the moment combat begins." },
+
+  { "from": "vajra",        "to": "sunder",               "type": "amplifies",   "desc": "+1 Strength boosts Sunder's damage slightly. Small but consistent across every fight." },
+  { "from": "shuriken",     "to": "sunder",               "type": "conflict",    "desc": "Requires 3 attacks/turn. Ice Lance + Sunder cost 6 energy combined — rarely triggerable." },
+  { "from": "ornamental_fan","to": "sunder",              "type": "conflict",    "desc": "Same trigger problem as Shuriken. High-cost Frost attacks make 3-attack turns nearly impossible." },
+
+  { "from": "hyperbeam",    "to": "focus",                "type": "conflict",    "desc": "Loses 3 Focus permanently — devastates Frost passive block value for the rest of the run." },
+  { "from": "hyperbeam",    "to": "frost_orb",            "type": "conflict",    "desc": "Focus loss directly reduces Frost passive block per orb. The 28 AoE is not worth the permanent tax." },
+  { "from": "hyperbeam",    "to": "defragment",           "type": "conflict",    "desc": "Defragment spends a card and energy to build Focus; Hyperbeam destroys 3 of it in one play." },
+
+  { "from": "tesla_coil",   "to": "hailstorm",            "type": "conflict",    "desc": "Tesla Coil needs Lightning; Hailstorm needs Frost. These pull the deck in opposite directions." },
+  { "from": "tesla_coil",   "to": "lightning_orb",        "type": "triggers",    "desc": "Tesla Coil's only real use — needs a full Lightning build to justify its slot." }
+]

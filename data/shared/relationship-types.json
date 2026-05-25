@@ -1,0 +1,41 @@
+{
+  "relationshipTypes": {
+    "generates": {
+      "label": "Generates",
+      "color": "#38bdf8",
+      "desc": "This card or relic produces the target resource or mechanic."
+    },
+    "amplifies": {
+      "label": "Amplifies",
+      "color": "#a78bfa",
+      "desc": "This card or relic increases the power or value of the target."
+    },
+    "triggers": {
+      "label": "Triggers",
+      "color": "#34d399",
+      "desc": "This card or relic activates or conditions the target mechanic."
+    },
+    "scales_with": {
+      "label": "Scales with",
+      "color": "#fb923c",
+      "desc": "This card or relic becomes more powerful as the target resource grows."
+    },
+    "conflict": {
+      "label": "Conflicts with",
+      "color": "#f87171",
+      "desc": "This card or relic works against or undermines the target."
+    }
+  },
+  "rarityColors": {
+    "starter":  "#7a8fa6",
+    "common":   "#c0c8d0",
+    "uncommon": "#4fc97e",
+    "rare":     "#f0c040",
+    "relic":    "#e07040"
+  },
+  "nodeTypes": {
+    "mechanic": "Abstract game mechanic (Orb, Focus, etc.)",
+    "card":     "Playable card",
+    "relic":    "Passive relic item"
+  }
+}

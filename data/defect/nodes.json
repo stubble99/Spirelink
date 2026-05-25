@@ -1,0 +1,225 @@
+[
+  {
+    "id": "frost_orb",
+    "label": "Frost Orb",
+    "type": "mechanic",
+    "rarity": null,
+    "desc": "Passive: 2 Block/turn. Evoke: 5 Block. Scales with Focus — each Focus point adds 1 to passive block per orb.",
+    "archetype": ["wall_of_ice"]
+  },
+  {
+    "id": "dark_orb",
+    "label": "Dark Orb",
+    "type": "mechanic",
+    "rarity": null,
+    "desc": "Passive: accumulates 6 damage/turn. Evoke: deal accumulated damage to lowest-HP enemy. Scales with Focus.",
+    "archetype": ["lord_of_darkness"]
+  },
+  {
+    "id": "lightning_orb",
+    "label": "Lightning Orb",
+    "type": "mechanic",
+    "rarity": null,
+    "desc": "Passive: 2 damage to random enemy. Evoke: 8 damage to random enemy. Core of Lightning builds.",
+    "archetype": ["pure_lightning"]
+  },
+  {
+    "id": "focus",
+    "label": "Focus",
+    "type": "mechanic",
+    "rarity": null,
+    "desc": "Each point of Focus adds to all Orb passive and Evoke values. The most impactful scaling stat for the Defect.",
+    "archetype": ["wall_of_ice", "lord_of_darkness", "pure_lightning"]
+  },
+  {
+    "id": "orb_slots",
+    "label": "Orb Slots",
+    "type": "mechanic",
+    "rarity": null,
+    "desc": "More slots = more simultaneous Orb passives firing each turn. Default 3. Expand with Capacitor or Modded.",
+    "archetype": ["wall_of_ice", "lord_of_darkness", "pure_lightning"]
+  },
+  {
+    "id": "ice_lance",
+    "label": "Ice Lance",
+    "type": "card",
+    "rarity": "uncommon",
+    "cost": 3,
+    "desc": "Deal 19 damage. Channel 3 Frost. Powerful all-in-one — damage plus filling your frost slots in a single play.",
+    "archetype": ["wall_of_ice"]
+  },
+  {
+    "id": "glacier",
+    "label": "Glacier",
+    "type": "card",
+    "rarity": "common",
+    "cost": 2,
+    "desc": "Gain 6 Block. Channel 2 Frost. Double value per energy — both protects you and feeds the frost engine.",
+    "archetype": ["wall_of_ice"]
+  },
+  {
+    "id": "shadow_shield",
+    "label": "Shadow Shield",
+    "type": "card",
+    "rarity": "common",
+    "cost": 2,
+    "desc": "Gain 11 Block. Channel 1 Dark. Strong block now plus a growing Dark threat in the background.",
+    "archetype": ["wall_of_ice", "lord_of_darkness"]
+  },
+  {
+    "id": "hailstorm",
+    "label": "Hailstorm",
+    "type": "card",
+    "rarity": "common",
+    "cost": 1,
+    "desc": "Power: end of your turn, if you have Frost, deal 6 AoE damage. Your passive damage engine against groups.",
+    "archetype": ["wall_of_ice"]
+  },
+  {
+    "id": "sunder",
+    "label": "Sunder",
+    "type": "card",
+    "rarity": "uncommon",
+    "cost": 3,
+    "desc": "Deal 24 damage. If this kills an enemy, gain 3 Energy. Kill-shot finisher — the energy refund enables chaining.",
+    "archetype": ["wall_of_ice"]
+  },
+  {
+    "id": "charge_battery",
+    "label": "Charge Battery",
+    "type": "card",
+    "rarity": "starter",
+    "cost": 1,
+    "desc": "Gain 7 Block. Next turn gain 1 Energy. Starter block card — reliable but not synergistic.",
+    "archetype": []
+  },
+  {
+    "id": "claw",
+    "label": "Claw",
+    "type": "card",
+    "rarity": "starter",
+    "cost": 0,
+    "desc": "Deal 3 damage. All Claw cards deal +2 this combat. Surprisingly useful in Frost decks — cheap attacks fill turns.",
+    "archetype": ["wall_of_ice"]
+  },
+  {
+    "id": "tesla_coil",
+    "label": "Tesla Coil",
+    "type": "card",
+    "rarity": "common",
+    "cost": 0,
+    "desc": "Deal 3 damage. Trigger all Lightning orbs against the enemy. Orphaned without a Lightning build.",
+    "archetype": ["pure_lightning"]
+  },
+  {
+    "id": "defragment",
+    "label": "Defragment",
+    "type": "card",
+    "rarity": "rare",
+    "cost": 1,
+    "desc": "Power: Gain 1 Focus (+2 upgraded). Permanently amplifies every Orb passive. The single most impactful Defect card — upgrade immediately.",
+    "archetype": ["wall_of_ice", "lord_of_darkness", "pure_lightning"]
+  },
+  {
+    "id": "capacitor",
+    "label": "Capacitor",
+    "type": "card",
+    "rarity": "uncommon",
+    "cost": 1,
+    "desc": "Power: Gain 2 Orb Slots (+3 upgraded). Auto-pick in every Orb deck. Solves the overflow problem immediately.",
+    "archetype": ["wall_of_ice", "lord_of_darkness", "pure_lightning"]
+  },
+  {
+    "id": "loop",
+    "label": "Loop",
+    "type": "card",
+    "rarity": "uncommon",
+    "cost": 1,
+    "desc": "Power: start of your turn, trigger your rightmost Orb's passive. Free block or damage every turn before you play a card.",
+    "archetype": ["wall_of_ice", "lord_of_darkness"]
+  },
+  {
+    "id": "barrage",
+    "label": "Barrage",
+    "type": "card",
+    "rarity": "common",
+    "cost": 1,
+    "desc": "Deal 5 damage per Channeled Orb. Scales directly with your slot count — at 5 slots full: 25 damage for 1 energy.",
+    "archetype": ["wall_of_ice"]
+  },
+  {
+    "id": "coolheaded",
+    "label": "Coolheaded",
+    "type": "card",
+    "rarity": "common",
+    "cost": 1,
+    "desc": "Channel 1 Frost. Draw 1 card. Efficient frost generation that replaces itself — excellent card economy.",
+    "archetype": ["wall_of_ice"]
+  },
+  {
+    "id": "cold_snap",
+    "label": "Cold Snap",
+    "type": "card",
+    "rarity": "common",
+    "cost": 1,
+    "desc": "Deal 6 damage. Channel 1 Frost. Cheap frost + damage — solid early game orb generation.",
+    "archetype": ["wall_of_ice"]
+  },
+  {
+    "id": "hyperbeam",
+    "label": "Hyperbeam",
+    "type": "card",
+    "rarity": "rare",
+    "cost": 2,
+    "desc": "Deal 28 to ALL enemies. Lose 3 Focus permanently. Tempting AoE but devastating to any Orb build.",
+    "archetype": []
+  },
+  {
+    "id": "vajra",
+    "label": "Vajra",
+    "type": "relic",
+    "rarity": "relic",
+    "desc": "Start each combat with +1 Strength. Passive damage boost — small but consistent across every fight.",
+    "archetype": []
+  },
+  {
+    "id": "shuriken",
+    "label": "Shuriken",
+    "type": "relic",
+    "rarity": "relic",
+    "desc": "+1 Strength per 3 attacks in a single turn. Hard to trigger reliably — Ice Lance and Sunder cost 3 each.",
+    "archetype": []
+  },
+  {
+    "id": "ornamental_fan",
+    "label": "Ornamental Fan",
+    "type": "relic",
+    "rarity": "relic",
+    "desc": "4 Block per 3 attacks in a single turn. Same trigger problem as Shuriken in high-cost Frost decks.",
+    "archetype": []
+  },
+  {
+    "id": "intimidating_helmet",
+    "label": "Int. Helmet",
+    "type": "relic",
+    "rarity": "relic",
+    "desc": "Gain 4 Block whenever you play a 2-cost card. Glacier and Shadow Shield trigger this every single play.",
+    "archetype": ["wall_of_ice"]
+  },
+  {
+    "id": "mango",
+    "label": "Mango",
+    "type": "relic",
+    "rarity": "relic",
+    "desc": "+14 Max HP. Pure survivability — gives you more margin to build your engine.",
+    "archetype": []
+  },
+  {
+    "id": "data_disk",
+    "label": "Data Disk",
+    "type": "relic",
+    "rarity": "relic",
+    "desc": "Start each combat with 1 Focus. Directly amplifies your entire Orb engine from turn 1 — extremely high value.",
+    "archetype": ["wall_of_ice", "lord_of_darkness", "pure_lightning"]
+  }
+]
